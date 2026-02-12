@@ -45,6 +45,19 @@ if (isset($_POST['letter']) && !isset($_POST['new_game'])) {
         $_SESSION['guessedLetters'] .= $letter;
     }
 }
+$selectedWord = $_SESSION['selectedWord'];
+$displayWord = $_SESSION['displayWord'];
+$attemptsLeft = $_SESSION['attemptsLeft'];
+$guessedLetters = $_SESSION['guessedLetters'];
 
+$gameOver = false;
+$win = false;
+if (strpos($displayWord, '_') === false) {
+    $gameOver = true;
+    $win = true;
+} elseif ($attemptsLeft <= 0) {
+    $gameOver = true;
+}
 ?>
+
 
