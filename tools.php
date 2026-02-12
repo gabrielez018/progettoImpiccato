@@ -13,9 +13,10 @@ function showLevel(){
         $levels[] = substr($entry,0,$position);
     }
     $d->close();
-    foreach($levels in $level){
-        echo"<button> $level </button>";
+    foreach($levels as $level){
+        echo"<button> livello $level </button> <br> <br>";
     }
 }
+showLevel();
     
 ?>
