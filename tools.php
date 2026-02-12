@@ -18,11 +18,12 @@ function showLevel(){
     }
 }
 function getWord($level){
-    
-    $path = "/livelli/ . $level . ".csv";
-    $file = fopen($path,"r");
-    if(!file_exist($path){
-
+    $path = "/livelli/" . $level . ".csv";
+    if(file_exist($path){
+        $file = fopen($path,"r");
+    }else{
+        return;
+    }
 }
 showLevel();
 
