@@ -17,6 +17,9 @@ function showLevel(){
         echo"<button> livello $level </button> <br> <br>";
     }
 }
+function getWord($level){
+    
+}
 showLevel();
     
 ?>
