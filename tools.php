@@ -18,8 +18,9 @@ function showLevel(){
     }
 }
 function getWord($level){
-    
+    $path = "/livelli/ . $level . ".csv";
+    $file = fopen($path,"r");
 }
 showLevel();
-    
+
 ?>
