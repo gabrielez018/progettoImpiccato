@@ -17,6 +17,9 @@ function showLevel(){
         echo"<button> livello $level </button> <br> <br>";
     }
 }
+
+
+
 function getWord($level){
     $path = "/livelli/" . $level . ".csv";
     if(file_exist($path){
@@ -24,7 +27,13 @@ function getWord($level){
     }else{
         return;
     }
+    while()
 }
+
+
+
+
+
 showLevel();
 
 ?>
