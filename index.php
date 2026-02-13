@@ -34,7 +34,7 @@
 		
         <div class="content">
             <div>
-                <h1>gioco dell'impiccato </h1>
+                <h1>impiccato </h1>
                 <h2>livelli disponibili</h2>
             </div>
             <div class="levels">
