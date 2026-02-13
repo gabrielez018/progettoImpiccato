@@ -1,5 +1,9 @@
 <?php
-    require_once 'autorizathion.php';
+	// Controlla se l'utente è loggato
+	if (!isset($authorized) || $authorized !== true) {
+		header('Location: login.php');
+		exit;
+	}
 ?>
 
 <html lang="en">
