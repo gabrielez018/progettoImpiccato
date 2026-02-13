@@ -36,15 +36,16 @@ function getWord($level){
             }
         }
     }
-    foreach($allWords as $word){
-        echo"$word";
-    }   
+    if(!empty($allWords)){
+        $index = array_rand($allWords); 
+        return $allWords[$index];
+    }else{
+        return;
+    } 
 }
 
 
-
-
-
 showLevel();
-getWord("1");
+$word = getWord("3");
+echo"$word";
 ?>
