@@ -1,0 +1,169 @@
+/* Contenitore principale */
+.hangman-drawing {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    margin: 20px auto; /* Centrato */
+    box-sizing: border-box;
+}
+
+/* Stile comune per tutti i pezzi */
+.piece {
+    position: absolute;
+    background-color: #333; /* Colore del disegno */
+    display: none; /* Nascosti di default */
+}
+
+/* --- DISEGNO DELLA FORCA --- */
+
+/* 1. La Base */
+.base {
+    bottom: 10px;
+    left: 10px;
+    width: 120px;
+    height: 4px;
+}
+
+/* 2. Il Palo Verticale */
+.post {
+    bottom: 10px;
+    left: 40px;
+    width: 4px;
+    height: 200px;
+}
+
+/* 3. La Barra Superiore e il supporto obliquo */
+.bar {
+    top: 40px;
+    left: 40px;
+    width: 100px;
+    height: 4px;
+}
+/* Aggiungiamo il supporto obliquo con uno pseudo-elemento per estetica */
+.bar::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: -2px;
+    width: 30px;
+    height: 4px;
+    background: #333;
+    transform: rotate(45deg);
+    transform-origin: top left;
+}
+
+/* 4. La Corda */
+.rope {
+    top: 40px;
+    right: 60px; /* Posizione relativa alla larghezza del contenitore */
+    width: 4px;
+    height: 30px;
+}
+
+/* --- DISEGNO DELL'OMINO --- */
+
+/* 5. La Testa */
+.head {
+    top: 70px; /* Fine della corda */
+    right: 47px; /* Centrato rispetto alla corda */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 4px solid #333333;
+    background-color: transparent; /* Interno vuoto */
+    box-sizing: border-box;
+}
+
+/* 6. Il Torace */
+.torso {
+    top: 100px;
+    right: 60px;
+    width: 4px;
+    height: 60px;
+}
+
+/* 7. Braccio Sinistro */
+.arm-l {
+    top: 110px;
+    right: 62px;
+    width: 40px;
+    height: 4px;
+    transform: rotate(30deg); /* Inclinato verso il basso */
+    transform-origin: top left; /* Ruota partendo dalla spalla */
+}
+
+/* 8. Braccio Destro */
+.arm-r {
+    top: 110px;
+    right: 20px; /* Posizionamento speculare */
+    width: 40px;
+    height: 4px;
+    transform: rotate(-30deg);
+    transform-origin: top right;
+}
+
+/* 9. Gamba Sinistra */
+.leg-l {
+    top: 155px; /* Fine del torace */
+    right: 62px;
+    width: 40px;
+    height: 4px;
+    transform: rotate(60deg);
+    transform-origin: top left;
+}
+
+/* 10. Gamba Destra */
+.leg-r {
+    top: 155px;
+    right: 20px;
+    width: 40px;
+    height: 4px;
+    transform: rotate(-60deg);
+    transform-origin: top right;
+}
+
+/* --- LOGICA DI VISUALIZZAZIONE PROGRESSIVA --- */
+/* Questa è la parte "magica": se data-errors è >= X, mostra i pezzi fino a X */
+
+.hangman-drawing[data-errors="1"] .base,
+.hangman-drawing[data-errors="2"] .base,
+.hangman-drawing[data-errors="2"] .post,
+.hangman-drawing[data-errors="3"] .base,
+.hangman-drawing[data-errors="3"] .post,
+.hangman-drawing[data-errors="3"] .bar,
+.hangman-drawing[data-errors="4"] .base,
+.hangman-drawing[data-errors="4"] .post,
+.hangman-drawing[data-errors="4"] .bar,
+.hangman-drawing[data-errors="4"] .rope,
+.hangman-drawing[data-errors="5"] .base,
+.hangman-drawing[data-errors="5"] .post,
+.hangman-drawing[data-errors="5"] .bar,
+.hangman-drawing[data-errors="5"] .rope,
+.hangman-drawing[data-errors="5"] .head,
+.hangman-drawing[data-errors="1"] .base,
+.hangman-drawing[data-errors="2"] .base,
+.hangman-drawing[data-errors="2"] .post,
+.hangman-drawing[data-errors="3"] .base,
+.hangman-drawing[data-errors="3"] .post,
+.hangman-drawing[data-errors="3"] .bar,
+.hangman-drawing[data-errors="4"] .base,
+.hangman-drawing[data-errors="4"] .post,
+.hangman-drawing[data-errors="4"] .bar,
+.hangman-drawing[data-errors="4"] .rope,
+.hangman-drawing[data-errors="5"] .base,
+.hangman-drawing[data-errors="5"] .post,
+.hangman-drawing[data-errors="5"] .bar,
+.hangman-drawing[data-errors="5"] .rope,
+.hangman-drawing[data-errors="5"] .head,
+.hangman-drawing[data-errors="6"] .base,
+.hangman-drawing[data-errors="6"] .post,
+.hangman-drawing[data-errors="6"] .bar,
+.hangman-drawing[data-errors="6"] .rope,
+.hangman-drawing[data-errors="6"] .head,
+.hangman-drawing[data-errors="6"] .torso,
+.hangman-drawing[data-errors="6"] .arm-l,
+.hangman-drawing[data-errors="6"] .arm-r,
+.hangman-drawing[data-errors="6"] .leg-l,
+.hangman-drawing[data-errors="6"] .leg-r {
+    display: block;
+}
