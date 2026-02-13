@@ -1,4 +1,6 @@
 <?php
+	require_once('authorization.php');
+
 	// Controlla se l'utente è loggato
 	if (!isset($authorized) || $authorized !== true) {
 		header('Location: login.php');
@@ -26,6 +28,10 @@
 
 </head>
     <body>
+		<?php
+			require_once('header.php');
+		?>
+		
         <div class="content">
             <div>
                 <h1>impiccato </h1>
