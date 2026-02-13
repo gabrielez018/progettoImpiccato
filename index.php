@@ -1,3 +1,6 @@
+<?php
+    require_once 'autorizathion.php';
+?>
 
 <html lang="en">
 <head>
