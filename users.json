@@ -1,1 +1,10 @@
-{"admin":{"username":"admin","password":"password123"},"user":{"username":"user","password":"test"}}
+{
+    "admin": {
+        "username": "admin",
+        "password": "password123"
+    },
+    "user": {
+        "username": "user",
+        "password": "test"
+    }
+}
