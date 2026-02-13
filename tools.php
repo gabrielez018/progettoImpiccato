@@ -1,7 +1,7 @@
 <?php
 function showLevel(){
     if(!is_dir("livelli")){
-        return [];
+        return;
     }
     $d = dir("livelli");
     $levels = [];
@@ -41,6 +41,7 @@ function getWord($level){
         return;
     } 
 }
+
 
 
 ?>
