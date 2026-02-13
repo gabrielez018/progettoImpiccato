@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['start_game'])) {
 	$level = $_POST['level'] ?? '';
 	$_SESSION['level'] = $level;
 	// populate session words for the selected level
-	$_SESSION['words'] = get_words_for_level($level);
+	$_SESSION['words'] = getWord($level);
 	// reset selected word so game will pick a new one
 	unset($_SESSION['selectedWord']);
 	header('Location: index.php');
@@ -56,7 +56,7 @@ $levelName = isset($_SESSION['level']) ? $_SESSION['level'] : '';
 		<?php if (empty($_SESSION['level']) || empty($_SESSION['selectedWord'])): ?>
 			<div class="card p-3 mb-3">
 				<h3>Seleziona livello</h3>
-				<?php $levels = get_levels(); ?>
+				<?php $levels = showLevel(); ?>
 				<?php if (empty($levels)): ?>
 					<div class="alert alert-warning">Nessun livello disponibile.</div>
 				<?php else: ?>

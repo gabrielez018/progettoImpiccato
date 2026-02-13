@@ -1,7 +1,7 @@
 <?php
 function showLevel(){
     if(!is_dir("livelli")){
-        return;
+        return [];
     }
     $d = dir("livelli");
     $levels = [];
@@ -13,9 +13,7 @@ function showLevel(){
         $levels[] = substr($entry,0,$position);
     }
     $d->close();
-    foreach($levels as $level){
-        echo"<button> livello $level </button> <br> <br>";
-    }
+    return $levels;
 }
 
 
@@ -45,7 +43,4 @@ function getWord($level){
 }
 
 
-showLevel();
-$word = getWord("3");
-echo"$word";
 ?>

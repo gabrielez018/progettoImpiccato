@@ -18,7 +18,7 @@
 
 /* 1. La Base */
 .base {
-    bottom: 10px;
+    bottom: 12px;
     left: 10px;
     width: 120px;
     height: 4px;
@@ -104,21 +104,21 @@
 
 /* 9. Gamba Sinistra */
 .leg-l {
-    top: 155px; /* Fine del torace */
-    right: 62px;
+    top: 200px; /* Fine del torace */
+    right: 55px;
     width: 40px;
     height: 4px;
-    transform: rotate(60deg);
+    transform: rotate(-60deg);
     transform-origin: top left;
 }
 
 /* 10. Gamba Destra */
 .leg-r {
-    top: 155px;
-    right: 20px;
+    top: 200px;
+    right: 27px;
     width: 40px;
     height: 4px;
-    transform: rotate(-60deg);
+    transform: rotate(60deg);
     transform-origin: top right;
 }
 
@@ -126,35 +126,39 @@
 /* Questa è la parte "magica": se data-errors è >= X, mostra i pezzi fino a X */
 
 .hangman-drawing[data-errors="1"] .base,
+
 .hangman-drawing[data-errors="2"] .base,
 .hangman-drawing[data-errors="2"] .post,
+.hangman-drawing[data-errors="2"] .bar,
+.hangman-drawing[data-errors="2"] .rope,
+
+
 .hangman-drawing[data-errors="3"] .base,
 .hangman-drawing[data-errors="3"] .post,
 .hangman-drawing[data-errors="3"] .bar,
+.hangman-drawing[data-errors="3"] .rope,
+.hangman-drawing[data-errors="3"] .head,
+
+
 .hangman-drawing[data-errors="4"] .base,
 .hangman-drawing[data-errors="4"] .post,
 .hangman-drawing[data-errors="4"] .bar,
 .hangman-drawing[data-errors="4"] .rope,
+.hangman-drawing[data-errors="4"] .head,
+.hangman-drawing[data-errors="4"] .torso,
+
+
 .hangman-drawing[data-errors="5"] .base,
 .hangman-drawing[data-errors="5"] .post,
 .hangman-drawing[data-errors="5"] .bar,
 .hangman-drawing[data-errors="5"] .rope,
 .hangman-drawing[data-errors="5"] .head,
-.hangman-drawing[data-errors="1"] .base,
-.hangman-drawing[data-errors="2"] .base,
-.hangman-drawing[data-errors="2"] .post,
-.hangman-drawing[data-errors="3"] .base,
-.hangman-drawing[data-errors="3"] .post,
-.hangman-drawing[data-errors="3"] .bar,
-.hangman-drawing[data-errors="4"] .base,
-.hangman-drawing[data-errors="4"] .post,
-.hangman-drawing[data-errors="4"] .bar,
-.hangman-drawing[data-errors="4"] .rope,
-.hangman-drawing[data-errors="5"] .base,
-.hangman-drawing[data-errors="5"] .post,
-.hangman-drawing[data-errors="5"] .bar,
-.hangman-drawing[data-errors="5"] .rope,
-.hangman-drawing[data-errors="5"] .head,
+.hangman-drawing[data-errors="5"] .torso,
+.hangman-drawing[data-errors="5"] .arm-l,
+.hangman-drawing[data-errors="5"] .arm-r,
+
+
+
 .hangman-drawing[data-errors="6"] .base,
 .hangman-drawing[data-errors="6"] .post,
 .hangman-drawing[data-errors="6"] .bar,
