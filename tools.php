@@ -21,20 +21,23 @@ function showLevel(){
 
 
 function getWord($level){
-    $path = "/livelli/" . $level . ".csv";
-    if(file_exist($path){
+    $path = "livelli/" . $level . ".csv";
+    if(file_exists($path)){
         $file = fopen($path,"r");
     }else{
         return;
     }
     $allWords = [];
-    while(($word = fgetcsv($file,1000,",")) !== false){
+    while(($data = fgetcsv($file,1000,",")) !== false){
         foreach ($data as $word) {
             $cleanedWord = trim($word);
             if (!empty($cleanedWord)) {
                 $allWords[] = $cleanedWord;
             }
         }
+    }
+    foreach($allWords as $word){
+        echo"$word";
     }   
 }
 
