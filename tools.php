@@ -30,11 +30,11 @@ function getWord($level){
     $allWords = [];
     while(($word = fgetcsv($file,1000,",")) !== false){
         foreach ($data as $word) {
-                $cleanedWord = trim($word);
-                if (!empty($cleanedWord)) {
-                    $allWords[] = $cleanedWord;
-                }
+            $cleanedWord = trim($word);
+            if (!empty($cleanedWord)) {
+                $allWords[] = $cleanedWord;
             }
+        }
     }   
 }
 
