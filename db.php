@@ -19,5 +19,5 @@ function verifyPassword($username, $password)
 	if (empty($user)) {
 		return false;
 	}
-	return ($user['password'] === $password);
+	return ($user['password'] === md5($password));
 }
