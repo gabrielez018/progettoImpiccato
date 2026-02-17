@@ -27,7 +27,6 @@ require_once 'gameFunctions.php';
     if (isset($_SESSION['username']) && $_SESSION['username'] === 'admin') {
         echo $_SESSION["secretWord"];
     }
-
     ?>
 
     <div class="container mt-3">
@@ -60,9 +59,9 @@ require_once 'gameFunctions.php';
 
                     <?php if ($gameOver): ?>
                         <?php if ($win): ?>
-                            <div class="alert alert-success">Hai vinto! Parola: <?php echo htmlspecialchars($selectedWord); ?></div>
+                            <div class="alert alert-success">Hai vinto! Parola: <?php echo htmlspecialchars($secretWord); ?></div>
                         <?php else: ?>
-                            <div class="alert alert-danger">Hai perso. Parola: <?php echo htmlspecialchars($selectedWord); ?></div>
+                            <div class="alert alert-danger">Hai perso. Parola: <?php echo htmlspecialchars($secretWord); ?></div>
                         <?php endif; ?>
                     <?php endif; ?>
 
@@ -73,8 +72,8 @@ require_once 'gameFunctions.php';
                         </div>
                     </form>
 
+                    <p><strong>Tentativi rimasti:</strong> <span id="attempts-left"><?php echo intval($_SESSION['attemptsLeft']); ?></span></p>
                     <p><strong>Lettere provate:</strong> <span id="guessed-letters"><?php echo htmlspecialchars(implode(', ', $guessedLetters)); ?></span></p>
-                    <p><strong>Tentativi rimasti:</strong> <span id="attempts-left"><?php echo intval($attemptsLeft); ?></span></p>
 
                     <div class="mt-2">
                         <form method="post" action="" style="display:inline-block;">
@@ -83,7 +82,6 @@ require_once 'gameFunctions.php';
                         <form method="post" action="" style="display:inline-block; margin-left:8px;">
                             <button type="submit" name="select_level" class="btn btn-secondary">Seleziona livello</button>
                         </form>
-                        <a href="logout.php" class="btn btn-outline-secondary" style="margin-left:8px;">Logout</a>
                     </div>
                 </div>
             </div>
