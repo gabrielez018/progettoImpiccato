@@ -24,6 +24,83 @@ function inizialiseGame (){
         header("Location: index.php");
         exit;
     }
+
+    // Gestione del tentativo
+    if (isset($_POST['letter'])) {
+        checkGuess($_POST['letter']);
+        header("Location: game.php"); 
+        exit;
+    }
+}
+
+function checkGuess($letter) {
+    $letter = validateInput($letter);
+    if (!$letter){
+        return;
+    }
+
+    if ($_SESSION['gameOver'] || wasAlreadyGuessed($letter)) {
+        return;
+    }
+
+    $_SESSION['guessedLetters'][] = $letter;
+
+    $found = revealLetter($letter);
+
+    updateGameStatus($found);
+}
+
+function validateInput($letter){
+    $letter = trim($letter);
+
+    if($letter === ''){
+        return null;
+    }
+
+    return strtoupper($letter);
+}
+
+function wasAlreadyGuessed($letter){
+    return in_array($letter,$_SESSION['guessedLetters']);
+}
+
+function revealLetter($letter){
+    $found = false;
+    $secretWord = $_SESSION['secretWord'];
+    $wordLength = mb_strlen($secretWord);
+
+    for ($i = 0; $i < $wordLength; $i++) {
+        $charInWord = mb_substr($secretWord, $i, 1);
+        
+        if (strtoupper($charInWord) === $letter) {
+            $_SESSION['displayChars'][$i] = $charInWord;
+            $found = true;
+        }
+    }
+    
+    if ($found) {
+        $_SESSION['displayWord'] = implode(' ', $_SESSION['displayChars']);
+    }
+
+    return $found;
+}
+
+function updateGameStatus($found) {
+    if ($found) {
+        // Controlla vincita
+        if (!in_array('_', $_SESSION['displayChars'])) {
+            $_SESSION['win'] = true;
+            $_SESSION['gameOver'] = true;
+        }
+    } else {
+        $_SESSION['attemptsLeft']--;
+
+        // Controlla perdita
+        if ($_SESSION['attemptsLeft'] <= 0) {
+            $_SESSION['gameOver'] = true;
+            $_SESSION['win'] = false;
+        }
+    }
 }
 
 function startNewGame ($level){
@@ -56,6 +133,8 @@ if (!isset($_SESSION['selectedLevel'])) {
     header("Location: index.php"); 
     exit;
 }
+
+
 
 // ----------------------------- Inizio pagina pulita
 
