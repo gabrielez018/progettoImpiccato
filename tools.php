@@ -1,5 +1,5 @@
 <?php
-function showLevel(){
+function getLevels(){
     if(!is_dir("livelli")){
         return;
     }

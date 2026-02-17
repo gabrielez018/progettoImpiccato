@@ -42,7 +42,7 @@
 
                     require_once('tools.php');
 
-                    $levels = showLevel();
+                    $levels = getLevels();
 
                     if (!empty($levels)) {
                         echo "<div class='list-group mb-3'>"; 
