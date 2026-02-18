@@ -30,5 +30,11 @@ function saveUser($username, $password){
     if (isset($users[$username])) {
         return false;
     }
-	
+	$users[$username] = [
+        "username" => $username,
+        "password" => md5($password)
+    ];
+	// uso json pretty print cosi il file resta formattato 
+	file_put_contents('users.json', json_encode($users, JSON_PRETTY_PRINT));
+    return true;
 }
