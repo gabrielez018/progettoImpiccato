@@ -26,6 +26,7 @@
 								<input type="password" class="form-control" id="password" name="password" required>
 							</div>
 							<button type="submit" class="btn btn-primary">Accedi</button>
+							<a href="register.php" class="btn btn-primary">Registrati</a>
 						</form>
 						<hr>
 						<p class="text-muted">Utenti di prova:</p>

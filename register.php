@@ -10,7 +10,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-header bg-success text-white">
+                        <div class="card-header bg-dark text-white">
                             <h3>Registrazione</h3>
                         </div>
                         <div class="card-body">
@@ -23,8 +23,8 @@
                                     <label class="form-label">Password</label>
                                     <input type="password" class="form-control" name="password" required>
                                 </div>
-                                <button type="submit" class="btn btn-success">Registrati</button>
-                                <a href="login.php" class="btn btn-link">Torna al Login</a>
+                                <button type="submit" class="btn btn-primary">Registrati</button>
+                                <a href="login.php" class="btn btn-primary">Torna al Login</a>
                             </form>
                         </div>
                     </div>
