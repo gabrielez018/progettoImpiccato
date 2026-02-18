@@ -21,3 +21,14 @@ function verifyPassword($username, $password)
 	}
 	return ($user['password'] === md5($password));
 }
+
+function saveUser($username, $password){
+
+	$raw = file_get_contents('users.json');
+    $users = json_decode($raw, true);
+
+    if (isset($users[$username])) {
+        return false;
+    }
+	
+}
