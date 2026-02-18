@@ -12,8 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
         else{
-            echo "utente gia esistente";
-            header(Location: 'register.php');
+            header('Location: register.php?error=1');
+            exit;
         }
     }
 }
