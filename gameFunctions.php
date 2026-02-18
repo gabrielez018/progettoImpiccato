@@ -3,7 +3,8 @@
 const MAX_ATTEMPTS = 6;
 
 // Inizializzazione gioco
-function inizialiseGame (){
+function inizialiseGame()
+{
     // Se arrivi direttamente da index
     if (isset($_POST['level'])) {
         startNewGame($_POST['level']);
@@ -28,14 +29,15 @@ function inizialiseGame (){
     // Gestione del tentativo
     if (isset($_POST['letter'])) {
         checkGuess($_POST['letter']);
-        header("Location: game.php"); 
+        header("Location: game.php");
         exit;
     }
 }
 
-function checkGuess($letter) {
+function checkGuess($letter)
+{
     $letter = validateInput($letter);
-    if (!$letter){
+    if (!$letter) {
         return;
     }
 
@@ -50,34 +52,37 @@ function checkGuess($letter) {
     updateGameStatus($found);
 }
 
-function validateInput($letter){
+function validateInput($letter)
+{
     $letter = trim($letter);
 
-    if($letter === ''){
+    if ($letter === '') {
         return null;
     }
 
     return strtoupper($letter);
 }
 
-function wasAlreadyGuessed($letter){
-    return in_array($letter,$_SESSION['guessedLetters']);
+function wasAlreadyGuessed($letter)
+{
+    return in_array($letter, $_SESSION['guessedLetters']);
 }
 
-function revealLetter($letter){
+function revealLetter($letter)
+{
     $found = false;
     $secretWord = $_SESSION['secretWord'];
     $wordLength = mb_strlen($secretWord);
 
     for ($i = 0; $i < $wordLength; $i++) {
         $charInWord = mb_substr($secretWord, $i, 1);
-        
+
         if (strtoupper($charInWord) === $letter) {
             $_SESSION['displayChars'][$i] = $charInWord;
             $found = true;
         }
     }
-    
+
     if ($found) {
         $_SESSION['displayWord'] = implode(' ', $_SESSION['displayChars']);
     }
@@ -85,7 +90,8 @@ function revealLetter($letter){
     return $found;
 }
 
-function updateGameStatus($found) {
+function updateGameStatus($found)
+{
     if ($found) {
         // Controlla vincita
         if (!in_array('_', $_SESSION['displayChars'])) {
@@ -103,7 +109,8 @@ function updateGameStatus($found) {
     }
 }
 
-function startNewGame ($level){
+function startNewGame($level)
+{
     $_SESSION['selectedLevel'] = $level;
     $_SESSION["secretWord"] = getWord($level);
     $_SESSION['attemptsLeft'] = MAX_ATTEMPTS;
@@ -114,7 +121,8 @@ function startNewGame ($level){
     $_SESSION['win'] = false;
 }
 
-function resetGame(): void {
+function resetGame(): void
+{
     unset(
         $_SESSION['selectedLevel'],
         $_SESSION['secretWord'],
@@ -130,7 +138,7 @@ function resetGame(): void {
 inizialiseGame();
 
 if (!isset($_SESSION['selectedLevel'])) {
-    header("Location: index.php"); 
+    header("Location: index.php");
     exit;
 }
 
@@ -138,7 +146,7 @@ if (!isset($_SESSION['selectedLevel'])) {
 
 // ----------------------------- Inizio pagina pulita
 
-$levelName = match($_SESSION["selectedLevel"]){
+$levelName = match ($_SESSION["selectedLevel"]) {
     '1' => 'facile',
     '2' => 'medio',
     '3' => 'difficile',
@@ -155,6 +163,3 @@ $displayWord = $_SESSION['displayWord'];
 $errors = MAX_ATTEMPTS - $_SESSION['attemptsLeft'];
 $gameOver = $_SESSION['gameOver'] ?? false;
 $win = $_SESSION['win'] ?? false;
-
-
-?>

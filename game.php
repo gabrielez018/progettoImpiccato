@@ -29,12 +29,14 @@ require_once 'gameFunctions.php';
     }
     ?>
 
-    <div class="container mt-3">        
-        <div class="top">
-            <div><strong>Difficoltà:</strong> <?php echo htmlspecialchars($levelName); ?></div>
-            <div class="text-center">
-                <h3>Gioco dell'impiccato</h3>
-            </div>
+    <div class="top text-center mb-4">
+            <h1 class="display-4 text-uppercase">
+                Gioco dell'impiccato
+            </h1>
+
+            <span class="badge bg-light text-dark border mb-2">
+                Difficoltà: <strong><?php echo htmlspecialchars($levelName); ?></strong>
+            </span>
         </div>
 
         <div class="center">
@@ -54,45 +56,53 @@ require_once 'gameFunctions.php';
             </div>
 
             <div class="card p-3 mb-3">
-                <div class="word" id="display-word"><?php echo htmlspecialchars($displayWord); ?></div>
-
+                
                 <?php if ($gameOver): ?>
-                    <?php if ($win): ?>
-                        <div class="alert alert-success">Hai vinto! Parola: <?php echo htmlspecialchars($secretWord); ?></div>
-                    <?php else: ?>
-                        <div class="alert alert-danger">Hai perso. Parola: <?php echo htmlspecialchars($secretWord); ?></div>
-                    <?php endif; ?>
+                    <div class="alert alert-<?php echo $win ? 'success' : 'danger'; ?> mb-4">
+                        <?php echo $win ? 'Hai vinto!' : 'Hai perso.'; ?> 
+                        Parola: <strong><?php echo htmlspecialchars($secretWord); ?></strong>
+                    </div>
                 <?php endif; ?>
 
-                <form method="post" action="" class="mb-2">
-                    <div class="input-group" style="max-width:240px;">
-                        <input
-                            type="text" 
-                            name="letter" 
-                            maxlength="1" 
-                            class="form-control" 
-                            placeholder="Inserisci lettera" 
-                            autocomplete="off"
-                            pattern="[A-Za-z]"
-                            required
-                            autofocus
-                        >
-                        <button class="btn btn-secondary" type="submit">Invia</button>
+                <div class="row align-items-center">
+                    
+                    <div class="col-md-auto pe-md-5">
+                        <form method="post" action="" class="mb-3">
+                            <div class="input-group" style="max-width:240px;">
+                                <input 
+                                    type="text" 
+                                    name="letter" 
+                                    maxlength="1" 
+                                    class="form-control" 
+                                    placeholder="Inserisci lettera" 
+                                    autocomplete="off"
+                                    pattern="[A-Za-z]"
+                                    required
+                                    oninput="this.value = this.value.replace(/[^A-Za-z]/g, '')"
+                                    autofocus
+                                >
+                                <button class="btn btn-secondary" type="submit">Invia</button>
+                            </div>
+                        </form>
+
+                        <p class="mb-1"><strong>Tentativi rimasti:</strong> <span id="attempts-left"><?php echo intval($_SESSION['attemptsLeft']); ?></span></p>
+                        <p><strong>Lettere provate:</strong> <span id="guessed-letters"><?php echo htmlspecialchars(implode(', ', $guessedLetters)); ?></span></p>
+
+                        <div class="mt-3">
+                            <form method="post" action="" style="display:inline-block;">
+                                <button type="submit" name="new_game" class="btn btn-primary">Ritenta</button>
+                            </form>
+                            <form method="post" action="" style="display:inline-block; margin-left:8px;">
+                                <button type="submit" name="select_level" class="btn btn-secondary">Seleziona livello</button>
+                            </form>
+                        </div>
                     </div>
-                </form>
 
-                <p><strong>Tentativi rimasti:</strong> <span id="attempts-left"><?php echo intval($_SESSION['attemptsLeft']); ?></span></p>
-                <p><strong>Lettere provate:</strong> <span id="guessed-letters"><?php echo htmlspecialchars(implode(', ', $guessedLetters)); ?></span></p>
+                    <div class="col text-center py-3">
+                        <div class="word display-4" id="display-word"><?php echo htmlspecialchars($displayWord); ?></div>
+                    </div>
 
-                <div class="mt-2">
-                    <form method="post" action="" style="display:inline-block;">
-                        <button type="submit" name="new_game" class="btn btn-primary">Ritenta</button>
-                    </form>
-                    <form method="post" action="" style="display:inline-block; margin-left:8px;">
-                        <button type="submit" name="select_level" class="btn btn-secondary">Seleziona livello</button>
-                    </form>
-                </div>
-            </div>
+                </div> </div>
         </div>
     </div>
 

@@ -3,18 +3,18 @@
     position: relative;
     width: 200px;
     height: 250px;
-    margin: 20px auto; /* Centrato */
+    margin: 20px auto;
     box-sizing: border-box;
 }
 
 /* Stile comune per tutti i pezzi */
 .piece {
     position: absolute;
-    background-color: #333; /* Colore del disegno */
-    display: none; /* Nascosti di default */
+    background-color: #333;
+    display: none;
 }
 
-/* --- DISEGNO DELLA FORCA --- */
+/* --- DISEGNO DELLA STRUTTURA --- */
 
 /* 1. La Base */
 .base {
@@ -55,7 +55,7 @@
 /* 4. La Corda */
 .rope {
     top: 40px;
-    right: 60px; /* Posizione relativa alla larghezza del contenitore */
+    right: 60px;
     width: 4px;
     height: 30px;
 }
@@ -64,13 +64,13 @@
 
 /* 5. La Testa */
 .head {
-    top: 70px; /* Fine della corda */
-    right: 47px; /* Centrato rispetto alla corda */
+    top: 70px;
+    right: 47px;
     width: 30px;
     height: 30px;
     border-radius: 50%;
     border: 4px solid #333333;
-    background-color: transparent; /* Interno vuoto */
+    background-color: transparent;
     box-sizing: border-box;
 }
 
@@ -88,14 +88,14 @@
     right: 62px;
     width: 40px;
     height: 4px;
-    transform: rotate(30deg); /* Inclinato verso il basso */
-    transform-origin: top left; /* Ruota partendo dalla spalla */
+    transform: rotate(30deg); 
+    transform-origin: top left;
 }
 
 /* 8. Braccio Destro */
 .arm-r {
     top: 110px;
-    right: 20px; /* Posizionamento speculare */
+    right: 20px;
     width: 40px;
     height: 4px;
     transform: rotate(-30deg);
@@ -104,7 +104,7 @@
 
 /* 9. Gamba Sinistra */
 .leg-l {
-    top: 200px; /* Fine del torace */
+    top: 200px;
     right: 55px;
     width: 40px;
     height: 4px;
@@ -122,8 +122,8 @@
     transform-origin: top right;
 }
 
+
 /* --- LOGICA DI VISUALIZZAZIONE PROGRESSIVA --- */
-/* Questa è la parte "magica": se data-errors è >= X, mostra i pezzi fino a X */
 
 .hangman-drawing[data-errors="1"] .base,
 
